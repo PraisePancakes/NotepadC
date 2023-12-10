@@ -37,11 +37,19 @@ Date *get_current_date_time()
     return new_date;
 }
 
+void display_current_date_time(Date *current_date_time)
+{
+    printf("CURRENT DATE : %02d/%02d/%02d \n", current_date_time->current_date->tm_mon, current_date_time->current_date->tm_mday, current_date_time->current_date->tm_year);
+    printf("CURRENT TIME : %02d:%02d:%02d %s \n", current_date_time->current_time->tm_hour > 12 ? current_date_time->current_time->tm_hour - 12 : current_date_time->current_time->tm_hour, current_date_time->current_time->tm_min, current_date_time->current_time->tm_sec, current_date_time->current_time->tm_hour > 12 ? "PM" : "AM");
+};
+
 int main()
 {
-    printf("HELLO WORLD 1");
+    const char *version = "v0.0.0-unreleased";
+    system("cls");
+    printf("=== WELCOME TO NOTEPAD C verson %s === \n", version);
     Date *current_date_time = get_current_date_time();
+    display_current_date_time(current_date_time);
 
-    printf("%d", current_date_time->current_date->tm_year);
     return 0;
 }
