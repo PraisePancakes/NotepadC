@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <windows.h>
 #define MONTH_OFFSET 1;
 #define YEAR_OFFSET 1900;
 
@@ -8,6 +9,8 @@ typedef struct User
 {
     char *username;
     unsigned short int age;
+    DocumentNode *document_head;
+
 } User;
 
 typedef struct Date
@@ -24,6 +27,12 @@ typedef struct Document
     char *subject;
     char *contents;
 } Document;
+
+typedef struct DocumentNode
+{
+    Document *data;
+    struct Document *next;
+} DocumentNode;
 
 Date *get_current_date_time()
 {
