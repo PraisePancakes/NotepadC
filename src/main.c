@@ -39,7 +39,7 @@ Date *get_current_date_time()
 
 int main()
 {
-    printf("HELLO WORLD");
+    printf("HELLO WORLD 1");
     Date *current_date_time = get_current_date_time();
 
     printf("%d", current_date_time->current_date->tm_year);
