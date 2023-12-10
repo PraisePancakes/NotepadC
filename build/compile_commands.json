@@ -1,0 +1,8 @@
+[
+{
+  "directory": "C:/Users/aryas/OneDrive/Desktop/NotepadC/build",
+  "command": "C:\\MinGW\\bin\\gcc.exe   -g -o CMakeFiles\\NotepadC.dir\\src\\main.c.obj -c C:\\Users\\aryas\\OneDrive\\Desktop\\NotepadC\\src\\main.c",
+  "file": "C:/Users/aryas/OneDrive/Desktop/NotepadC/src/main.c",
+  "output": "CMakeFiles/NotepadC.dir/src/main.c.obj"
+}
+]
