@@ -36,4 +36,5 @@ CMakeFiles/NotepadC.dir/src/main.c.obj: \
  c:\mingw\include\ole2.h c:\mingw\include\objbase.h \
  c:\mingw\include\objidl.h c:\mingw\include\cguid.h \
  c:\mingw\include\olectlid.h c:\mingw\include\oleauto.h \
- c:\mingw\include\oaidl.h c:\mingw\include\oleidl.h
+ c:\mingw\include\oaidl.h c:\mingw\include\oleidl.h \
+ c:\mingw\include\conio.h
