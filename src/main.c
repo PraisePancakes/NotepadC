@@ -9,6 +9,15 @@
 #define BUFFER_SIZE 256
 #define MAX_PATH 260
 
+/*
+   :: TO-DO ::
+   1 : IF NOT FIRST TIME CREATING, STAMP UPDATED DATE INTO FILE;
+   2 : IMPLEMENT CONSOLE COLOR HANDLE THROUGH WINDOWS HEADER
+   3 : REFACTOR
+
+
+*/
+
 typedef struct User
 {
     char *username;
@@ -26,15 +35,6 @@ typedef struct Document
     char *contents;
 } Document;
 
-/*
-   :: TO-DO ::
-   1 : IF NOT FIRST TIME CREATING, STAMP UPDATED DATE INTO FILE;
-   2 : IMPLEMENT CONSOLE COLOR HANDLE THROUGH WINDOWS HEADER
-   3 : REFACTOR
-
-
-*/
-
 struct tm *get_current_date_time();
 void display_current_date_time(struct tm *current_date_time);
 unsigned short int get_menu_option();
@@ -42,7 +42,17 @@ User *get_user();
 void save_user(const char *filepath, User *user);
 User *load_user(const char *filepath);
 void save_document(const char *docs_base_dir, Document *document);
-Document *create_document(struct tm *current_date_time);
+Document *create_document(struct tm *current_date_time, User *user);
+void free_user(User *user)
+{
+    free(user->username);
+    for (int i = 0; i < user->note_length; i++)
+    {
+        free(user->note_titles[i]);
+    }
+    free(user->note_titles);
+    free(user);
+}
 
 int main()
 {
@@ -78,7 +88,7 @@ int main()
             system("cls");
             printf(":: CREATE A NOTE :: \n");
             display_current_date_time(current_date_time);
-            Document *new_document = create_document(current_date_time);
+            Document *new_document = create_document(current_date_time, user);
             save_document(documents_base_directory, new_document);
             user->note_length++;
             free(new_document);
@@ -86,13 +96,19 @@ int main()
             break;
         case 2:
             system("cls");
-            printf(":: VIEW ALL NOTES ::\n");
+            printf(":: CHOOSE A NOTE TO VIEW ::\n");
             if (user->note_length == 0)
             {
                 printf("You currently have %d notes", user->note_length);
                 getch();
                 break;
             }
+            for (int i = 0; i < user->note_length; i++)
+            {
+                printf("%d : %s\n", user->note_titles[i]);
+            }
+            // view_note(user, choice) { strcat the title with .bin and the base path dir then -> fopen(user->note_titles[choice], rb); }
+
             getch();
             break;
         case 3:
@@ -100,6 +116,7 @@ int main()
             break;
         case 4:
             save_user(user_filepath, user);
+            free_user(user);
             printf(":: NOTEPAD C PROCESS TERMINATED SUCCESSFULLY ::");
             break;
         default:
@@ -178,6 +195,13 @@ void save_user(const char *filepath, User *user)
 
     fwrite(&(user->note_length), sizeof(int), 1, fp);
 
+    for (int i = 0; i < user->note_length; i++)
+    {
+        size_t title_length = strlen(user->note_titles[i]) + 1;
+        fwrite(&title_length, sizeof(size_t), 1, fp);
+        fwrite(user->note_titles[i], sizeof(char), title_length, fp);
+    }
+
     fclose(fp);
 }
 
@@ -220,6 +244,31 @@ User *load_user(const char *filepath)
         return NULL;
     }
 
+    user->note_titles = malloc(user->note_length * sizeof(char *));
+    for (int i = 0; i < user->note_length; i++)
+    {
+        size_t title_length;
+        if (fread(&title_length, sizeof(size_t), 1, fp) != 1)
+        {
+            fclose(fp);
+            free(user->username);
+            free(user->note_titles);
+            free(user);
+            return NULL;
+        }
+
+        user->note_titles[i] = malloc(title_length);
+        if (fread(user->note_titles[i], sizeof(char), title_length, fp) != title_length)
+        {
+            fclose(fp);
+            free(user->username);
+            free(user->note_titles[i]);
+            free(user->note_titles);
+            free(user);
+            return NULL;
+        }
+    }
+
     fclose(fp);
     return user;
 }
@@ -241,7 +290,7 @@ void save_document(const char *docs_base_dir, Document *document)
     }
 };
 
-Document *create_document(struct tm *current_date_time)
+Document *create_document(struct tm *current_date_time, User *user)
 {
     fflush(stdin);
     Document *new_document = malloc(sizeof(Document));
@@ -254,6 +303,10 @@ Document *create_document(struct tm *current_date_time)
     new_document->title = malloc(strlen(p_input_buff) + 1);
     strcpy(new_document->title, p_input_buff);
 
+    user->note_titles = realloc(user->note_titles, (user->note_length + 1) * sizeof(char *));
+    user->note_titles[user->note_length] = malloc(strlen(new_document->title) + 1);
+    strcpy(user->note_titles[user->note_length], new_document->title);
+
     printf("\n\n :: TYPE AWAY :: \n\n");
     printf("================================================================\n");
     char contents_buff[BUFFER_SIZE];
@@ -264,6 +317,8 @@ Document *create_document(struct tm *current_date_time)
     strcpy(new_document->contents, p_contents_buff);
 
     new_document->created_at = current_date_time;
+    new_document->updated_at = current_date_time;
+    new_document->author = user->username;
 
     return new_document;
 };
