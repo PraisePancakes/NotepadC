@@ -9,7 +9,7 @@ typedef struct User
 {
     char *username;
     unsigned short int age;
-    DocumentNode *document_head;
+    struct DocumentNode *document_head;
 
 } User;
 
@@ -34,6 +34,20 @@ typedef struct DocumentNode
     struct Document *next;
 } DocumentNode;
 
+/*
+   :: TO-DO ::
+   1 : ALLOW USER TO TYPE CONTENTS OF FILE INTO COMMAND LINE
+        i. get user info
+   2 : CREATE A TXT FILE
+   3 : COPY COMMAND LINE CONTENTS INTO TXT FILE
+   4 : STAMP CREATED DATE INTO FILE
+   5 : IF NOT FIRST TIME CREATING, STAMP UPDATED DATE INTO FILE;
+   6 : SAVE TXT FILE
+   7 : IMPLEMENT CONSOLE COLOR HANDLE THROUGH WINDOWS HEADER
+
+
+*/
+
 Date *get_current_date_time()
 {
     time_t t = time(NULL);
@@ -51,6 +65,19 @@ void display_current_date_time(Date *current_date_time)
     printf("CURRENT DATE : %02d/%02d/%02d \n", current_date_time->current_date->tm_mon, current_date_time->current_date->tm_mday, current_date_time->current_date->tm_year);
     printf("CURRENT TIME : %02d:%02d:%02d %s \n", current_date_time->current_time->tm_hour > 12 ? current_date_time->current_time->tm_hour - 12 : current_date_time->current_time->tm_hour, current_date_time->current_time->tm_min, current_date_time->current_time->tm_sec, current_date_time->current_time->tm_hour > 12 ? "PM" : "AM");
 };
+
+unsigned short int get_menu_option()
+{
+    unsigned short int option = 0;
+    printf(":::: MENU ::::\n");
+    printf("1 : Add a note \n");
+    printf("2 : View a note \n");
+    printf("3 : Edit a note \n");
+    printf("4 : Quit \n");
+    printf("Enter : ");
+    scanf("%hu", &option);
+    return option;
+}
 
 int main()
 {
