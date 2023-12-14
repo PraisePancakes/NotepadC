@@ -7,6 +7,7 @@
 #define MONTH_OFFSET 1
 #define YEAR_OFFSET 1900
 #define BUFFER_SIZE 256
+#define MAX_PATH 260
 
 typedef struct User
 {
@@ -128,32 +129,43 @@ User *load_user(const char *filepath)
     return user;
 }
 
-void save_document(const char *filepath, Document *document)
+void save_document(const char *docs_base_dir, Document *document)
 {
-    document->title = strcat(document->title, ".bin");
-    printf("title : %s \n", document->title);
-    filepath = strcat(filepath, document->title);
-    printf("filepath : %s \n", filepath);
-    FILE *fp = fopen(filepath, "wb");
+    strcat(document->title, ".bin");
+
+    char full_path[MAX_PATH];
+    strcpy(full_path, docs_base_dir);
+    strcat(full_path, document->title);
+
+    FILE *fp = fopen(full_path, "wb");
     if (fp == NULL)
     {
-        fprintf(stderr, "ERROR :: file | %s returned NULL for writing note", filepath);
+        fprintf(stderr, "ERROR :: file | %s returned NULL for writing note", full_path);
         fclose(fp);
         return;
     }
+};
 
-    fclose(fp);
-}
+Document *create_document()
+{
+    fflush(stdin);
+    Document *new_document = malloc(sizeof(Document));
+    printf("Enter the subject of this document : ");
+    char input[BUFFER_SIZE];
+    char *p_input = fgets(input, BUFFER_SIZE, stdin);
+    strtok(p_input, "\n");
 
-Document* create_document() {
-    Document* new_document = malloc(sizeof(Document));
+    new_document->title = malloc(strlen(p_input) + 1);
+    strcpy(new_document->title, p_input);
+
+    return new_document;
 };
 
 int main()
 {
     const char *version = "v0.0.0-unreleased";
     const char *user_filepath = ".././save/User/user.bin";
-    const char *documents_filepath = ".././save/Docs/";
+    const char *documents_base_directory = ".././save/Docs/";
     const unsigned short int MENU_EXIT = 4;
     unsigned short int menu_option = 0;
 
@@ -182,7 +194,7 @@ int main()
         case 1:
             printf(":: CREATE A NOTE :: \n");
             Document *new_document = create_document();
-            save_document(documents_filepath, new_document);
+            save_document(documents_base_directory, new_document);
             user->note_length++;
             free(new_document);
             getch();
