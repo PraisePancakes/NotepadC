@@ -4,5 +4,23 @@
   "command": "C:\\MinGW\\bin\\gcc.exe   -g -o CMakeFiles\\NotepadC.dir\\src\\main.c.obj -c C:\\Users\\aryas\\OneDrive\\Desktop\\NotepadC\\src\\main.c",
   "file": "C:/Users/aryas/OneDrive/Desktop/NotepadC/src/main.c",
   "output": "CMakeFiles/NotepadC.dir/src/main.c.obj"
+},
+{
+  "directory": "C:/Users/aryas/OneDrive/Desktop/NotepadC/build",
+  "command": "C:\\MinGW\\bin\\gcc.exe   -g -o CMakeFiles\\NotepadC.dir\\src\\document.c.obj -c C:\\Users\\aryas\\OneDrive\\Desktop\\NotepadC\\src\\document.c",
+  "file": "C:/Users/aryas/OneDrive/Desktop/NotepadC/src/document.c",
+  "output": "CMakeFiles/NotepadC.dir/src/document.c.obj"
+},
+{
+  "directory": "C:/Users/aryas/OneDrive/Desktop/NotepadC/build",
+  "command": "C:\\MinGW\\bin\\gcc.exe   -g -o CMakeFiles\\NotepadC.dir\\src\\gui.c.obj -c C:\\Users\\aryas\\OneDrive\\Desktop\\NotepadC\\src\\gui.c",
+  "file": "C:/Users/aryas/OneDrive/Desktop/NotepadC/src/gui.c",
+  "output": "CMakeFiles/NotepadC.dir/src/gui.c.obj"
+},
+{
+  "directory": "C:/Users/aryas/OneDrive/Desktop/NotepadC/build",
+  "command": "C:\\MinGW\\bin\\gcc.exe   -g -o CMakeFiles\\NotepadC.dir\\src\\user.c.obj -c C:\\Users\\aryas\\OneDrive\\Desktop\\NotepadC\\src\\user.c",
+  "file": "C:/Users/aryas/OneDrive/Desktop/NotepadC/src/user.c",
+  "output": "CMakeFiles/NotepadC.dir/src/user.c.obj"
 }
 ]

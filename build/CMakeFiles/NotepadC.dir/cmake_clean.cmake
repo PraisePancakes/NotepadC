@@ -1,6 +1,12 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/NotepadC.dir/src/document.c.obj"
+  "CMakeFiles/NotepadC.dir/src/document.c.obj.d"
+  "CMakeFiles/NotepadC.dir/src/gui.c.obj"
+  "CMakeFiles/NotepadC.dir/src/gui.c.obj.d"
   "CMakeFiles/NotepadC.dir/src/main.c.obj"
   "CMakeFiles/NotepadC.dir/src/main.c.obj.d"
+  "CMakeFiles/NotepadC.dir/src/user.c.obj"
+  "CMakeFiles/NotepadC.dir/src/user.c.obj.d"
   "NotepadC.exe"
   "NotepadC.exe.manifest"
   "NotepadC.pdb"

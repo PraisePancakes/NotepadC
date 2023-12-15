@@ -128,6 +128,54 @@ NotepadC/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\NotepadC.dir\build.make CMakeFiles/NotepadC.dir/build
 .PHONY : NotepadC/fast
 
+src/document.obj: src/document.c.obj
+.PHONY : src/document.obj
+
+# target to build an object file
+src/document.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NotepadC.dir\build.make CMakeFiles/NotepadC.dir/src/document.c.obj
+.PHONY : src/document.c.obj
+
+src/document.i: src/document.c.i
+.PHONY : src/document.i
+
+# target to preprocess a source file
+src/document.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NotepadC.dir\build.make CMakeFiles/NotepadC.dir/src/document.c.i
+.PHONY : src/document.c.i
+
+src/document.s: src/document.c.s
+.PHONY : src/document.s
+
+# target to generate assembly for a file
+src/document.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NotepadC.dir\build.make CMakeFiles/NotepadC.dir/src/document.c.s
+.PHONY : src/document.c.s
+
+src/gui.obj: src/gui.c.obj
+.PHONY : src/gui.obj
+
+# target to build an object file
+src/gui.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NotepadC.dir\build.make CMakeFiles/NotepadC.dir/src/gui.c.obj
+.PHONY : src/gui.c.obj
+
+src/gui.i: src/gui.c.i
+.PHONY : src/gui.i
+
+# target to preprocess a source file
+src/gui.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NotepadC.dir\build.make CMakeFiles/NotepadC.dir/src/gui.c.i
+.PHONY : src/gui.c.i
+
+src/gui.s: src/gui.c.s
+.PHONY : src/gui.s
+
+# target to generate assembly for a file
+src/gui.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NotepadC.dir\build.make CMakeFiles/NotepadC.dir/src/gui.c.s
+.PHONY : src/gui.c.s
+
 src/main.obj: src/main.c.obj
 .PHONY : src/main.obj
 
@@ -152,6 +200,30 @@ src/main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\NotepadC.dir\build.make CMakeFiles/NotepadC.dir/src/main.c.s
 .PHONY : src/main.c.s
 
+src/user.obj: src/user.c.obj
+.PHONY : src/user.obj
+
+# target to build an object file
+src/user.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NotepadC.dir\build.make CMakeFiles/NotepadC.dir/src/user.c.obj
+.PHONY : src/user.c.obj
+
+src/user.i: src/user.c.i
+.PHONY : src/user.i
+
+# target to preprocess a source file
+src/user.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NotepadC.dir\build.make CMakeFiles/NotepadC.dir/src/user.c.i
+.PHONY : src/user.c.i
+
+src/user.s: src/user.c.s
+.PHONY : src/user.s
+
+# target to generate assembly for a file
+src/user.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NotepadC.dir\build.make CMakeFiles/NotepadC.dir/src/user.c.s
+.PHONY : src/user.c.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -161,9 +233,18 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... NotepadC
+	@echo ... src/document.obj
+	@echo ... src/document.i
+	@echo ... src/document.s
+	@echo ... src/gui.obj
+	@echo ... src/gui.i
+	@echo ... src/gui.s
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s
+	@echo ... src/user.obj
+	@echo ... src/user.i
+	@echo ... src/user.s
 .PHONY : help
 
 

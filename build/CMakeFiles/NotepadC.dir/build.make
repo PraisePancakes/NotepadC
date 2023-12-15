@@ -82,19 +82,67 @@ CMakeFiles/NotepadC.dir/src/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/NotepadC.dir/src/main.c.s"
 	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\aryas\OneDrive\Desktop\NotepadC\src\main.c -o CMakeFiles\NotepadC.dir\src\main.c.s
 
+CMakeFiles/NotepadC.dir/src/document.c.obj: CMakeFiles/NotepadC.dir/flags.make
+CMakeFiles/NotepadC.dir/src/document.c.obj: C:/Users/aryas/OneDrive/Desktop/NotepadC/src/document.c
+CMakeFiles/NotepadC.dir/src/document.c.obj: CMakeFiles/NotepadC.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\aryas\OneDrive\Desktop\NotepadC\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/NotepadC.dir/src/document.c.obj"
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NotepadC.dir/src/document.c.obj -MF CMakeFiles\NotepadC.dir\src\document.c.obj.d -o CMakeFiles\NotepadC.dir\src\document.c.obj -c C:\Users\aryas\OneDrive\Desktop\NotepadC\src\document.c
+
+CMakeFiles/NotepadC.dir/src/document.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/NotepadC.dir/src/document.c.i"
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\aryas\OneDrive\Desktop\NotepadC\src\document.c > CMakeFiles\NotepadC.dir\src\document.c.i
+
+CMakeFiles/NotepadC.dir/src/document.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/NotepadC.dir/src/document.c.s"
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\aryas\OneDrive\Desktop\NotepadC\src\document.c -o CMakeFiles\NotepadC.dir\src\document.c.s
+
+CMakeFiles/NotepadC.dir/src/gui.c.obj: CMakeFiles/NotepadC.dir/flags.make
+CMakeFiles/NotepadC.dir/src/gui.c.obj: C:/Users/aryas/OneDrive/Desktop/NotepadC/src/gui.c
+CMakeFiles/NotepadC.dir/src/gui.c.obj: CMakeFiles/NotepadC.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\aryas\OneDrive\Desktop\NotepadC\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/NotepadC.dir/src/gui.c.obj"
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NotepadC.dir/src/gui.c.obj -MF CMakeFiles\NotepadC.dir\src\gui.c.obj.d -o CMakeFiles\NotepadC.dir\src\gui.c.obj -c C:\Users\aryas\OneDrive\Desktop\NotepadC\src\gui.c
+
+CMakeFiles/NotepadC.dir/src/gui.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/NotepadC.dir/src/gui.c.i"
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\aryas\OneDrive\Desktop\NotepadC\src\gui.c > CMakeFiles\NotepadC.dir\src\gui.c.i
+
+CMakeFiles/NotepadC.dir/src/gui.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/NotepadC.dir/src/gui.c.s"
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\aryas\OneDrive\Desktop\NotepadC\src\gui.c -o CMakeFiles\NotepadC.dir\src\gui.c.s
+
+CMakeFiles/NotepadC.dir/src/user.c.obj: CMakeFiles/NotepadC.dir/flags.make
+CMakeFiles/NotepadC.dir/src/user.c.obj: C:/Users/aryas/OneDrive/Desktop/NotepadC/src/user.c
+CMakeFiles/NotepadC.dir/src/user.c.obj: CMakeFiles/NotepadC.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\aryas\OneDrive\Desktop\NotepadC\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/NotepadC.dir/src/user.c.obj"
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/NotepadC.dir/src/user.c.obj -MF CMakeFiles\NotepadC.dir\src\user.c.obj.d -o CMakeFiles\NotepadC.dir\src\user.c.obj -c C:\Users\aryas\OneDrive\Desktop\NotepadC\src\user.c
+
+CMakeFiles/NotepadC.dir/src/user.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/NotepadC.dir/src/user.c.i"
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\aryas\OneDrive\Desktop\NotepadC\src\user.c > CMakeFiles\NotepadC.dir\src\user.c.i
+
+CMakeFiles/NotepadC.dir/src/user.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/NotepadC.dir/src/user.c.s"
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\aryas\OneDrive\Desktop\NotepadC\src\user.c -o CMakeFiles\NotepadC.dir\src\user.c.s
+
 # Object files for target NotepadC
 NotepadC_OBJECTS = \
-"CMakeFiles/NotepadC.dir/src/main.c.obj"
+"CMakeFiles/NotepadC.dir/src/main.c.obj" \
+"CMakeFiles/NotepadC.dir/src/document.c.obj" \
+"CMakeFiles/NotepadC.dir/src/gui.c.obj" \
+"CMakeFiles/NotepadC.dir/src/user.c.obj"
 
 # External object files for target NotepadC
 NotepadC_EXTERNAL_OBJECTS =
 
 NotepadC.exe: CMakeFiles/NotepadC.dir/src/main.c.obj
+NotepadC.exe: CMakeFiles/NotepadC.dir/src/document.c.obj
+NotepadC.exe: CMakeFiles/NotepadC.dir/src/gui.c.obj
+NotepadC.exe: CMakeFiles/NotepadC.dir/src/user.c.obj
 NotepadC.exe: CMakeFiles/NotepadC.dir/build.make
 NotepadC.exe: CMakeFiles/NotepadC.dir/linkLibs.rsp
 NotepadC.exe: CMakeFiles/NotepadC.dir/objects1.rsp
 NotepadC.exe: CMakeFiles/NotepadC.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\aryas\OneDrive\Desktop\NotepadC\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable NotepadC.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\aryas\OneDrive\Desktop\NotepadC\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable NotepadC.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\NotepadC.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
