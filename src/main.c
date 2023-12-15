@@ -28,7 +28,6 @@ typedef struct User
 
 typedef struct Document
 {
-    User *author;
     struct tm *created_at;
     struct tm *updated_at;
     char *title;
@@ -41,18 +40,12 @@ unsigned short int get_menu_option();
 User *get_user();
 void save_user(const char *filepath, User *user);
 User *load_user(const char *filepath);
-void save_document(const char *docs_base_dir, Document *document);
+void save_document(const char *full_path_to_document, Document *document);
 Document *create_document(struct tm *current_date_time, User *user);
-void free_user(User *user)
-{
-    free(user->username);
-    for (int i = 0; i < user->note_length; i++)
-    {
-        free(user->note_titles[i]);
-    }
-    free(user->note_titles);
-    free(user);
-}
+void load_document(const char *full_path_to_document);
+void free_user(User *user);
+void free_document(Document *loaded_document);
+char *doc_full_path_string(const char *docs_base_dir, char *doc_title);
 
 int main()
 {
@@ -89,9 +82,11 @@ int main()
             printf(":: CREATE A NOTE :: \n");
             display_current_date_time(current_date_time);
             Document *new_document = create_document(current_date_time, user);
-            save_document(documents_base_directory, new_document);
+            char *full_path_to_doc = doc_full_path_string(documents_base_directory, new_document->title);
+            save_document(full_path_to_doc, new_document);
             user->note_length++;
             free(new_document);
+            free(full_path_to_doc);
             getch();
             break;
         case 2:
@@ -103,11 +98,18 @@ int main()
                 getch();
                 break;
             }
+
             for (int i = 0; i < user->note_length; i++)
             {
-                printf("%d : %s\n", user->note_titles[i]);
+                printf("%d : %s\n", i, user->note_titles[i]);
             }
-            // view_note(user, choice) { strcat the title with .bin and the base path dir then -> fopen(user->note_titles[choice], rb); }
+
+            int option = 0;
+            printf("Enter : ");
+            scanf("%d", &option);
+            const char *full_path_to_load_doc = doc_full_path_string(documents_base_directory, user->note_titles[option]);
+            load_document(full_path_to_load_doc);
+            free(full_path_to_load_doc);
 
             getch();
             break;
@@ -217,14 +219,13 @@ User *load_user(const char *filepath)
 
     User *user = malloc(sizeof(User));
 
-    // Read the username length and then the username
     size_t username_length;
     if (fread(&username_length, sizeof(size_t), 1, fp) != 1)
     {
         fclose(fp);
         free(user);
         return NULL;
-    }
+    };
 
     user->username = malloc(username_length);
     if (fread(user->username, sizeof(char), username_length, fp) != username_length)
@@ -233,16 +234,15 @@ User *load_user(const char *filepath)
         free(user->username);
         free(user);
         return NULL;
-    }
+    };
 
-    // Read the rest of the User struct excluding the username
     if (fread(&(user->note_length), sizeof(int), 1, fp) != 1)
     {
         fclose(fp);
         free(user->username);
         free(user);
         return NULL;
-    }
+    };
 
     user->note_titles = malloc(user->note_length * sizeof(char *));
     for (int i = 0; i < user->note_length; i++)
@@ -273,22 +273,69 @@ User *load_user(const char *filepath)
     return user;
 }
 
-void save_document(const char *docs_base_dir, Document *document)
+void load_document(const char *full_path_to_doc)
 {
-    strcat(document->title, ".bin");
-
-    char full_path[MAX_PATH];
-    strcpy(full_path, docs_base_dir);
-    strcat(full_path, document->title);
-
-    FILE *fp = fopen(full_path, "wb");
+    FILE *fp = fopen(full_path_to_doc, "rb");
     if (fp == NULL)
     {
-        fprintf(stderr, "ERROR :: file | %s returned NULL for writing note", full_path);
+        fprintf(stderr, "ERROR :: file | %s returned NULL for reading note", full_path_to_doc);
         fclose(fp);
         return;
     }
-};
+
+    Document *loaded_document = malloc(sizeof(Document));
+
+    size_t title_length;
+    fread(&title_length, sizeof(size_t), 1, fp);
+    loaded_document->title = malloc(title_length);
+    fread(loaded_document->title, sizeof(char), title_length, fp);
+
+    size_t contents_length;
+    fread(&contents_length, sizeof(size_t), 1, fp);
+    loaded_document->contents = malloc(contents_length);
+    fread(loaded_document->contents, sizeof(char), contents_length, fp);
+
+    loaded_document->created_at = malloc(sizeof(struct tm));
+    fread(loaded_document->created_at, sizeof(struct tm), 1, fp);
+    loaded_document->updated_at = malloc(sizeof(struct tm));
+    fread(loaded_document->updated_at, sizeof(struct tm), 1, fp);
+
+    fclose(fp);
+
+    printf("title: %s\n", loaded_document->title);
+    printf("date : %d/%d/%d", loaded_document->created_at->tm_mon, loaded_document->created_at->tm_mday, loaded_document->created_at->tm_year);
+    printf("contents: %s\n", loaded_document->contents);
+
+    free_document(loaded_document);
+}
+
+void save_document(const char *full_path_to_document, Document *document)
+{
+
+    FILE *fp = fopen(full_path_to_document, "wb");
+    if (fp == NULL)
+    {
+        fprintf(stderr, "ERROR :: file | %s returned NULL for writing note", full_path_to_document);
+        fclose(fp);
+        return;
+    }
+
+    // Write title
+    size_t title_length = strlen(document->title) + 1;
+    fwrite(&title_length, sizeof(size_t), 1, fp);
+    fwrite(document->title, sizeof(char), title_length, fp);
+
+    // Write contents
+    size_t contents_length = strlen(document->contents) + 1;
+    fwrite(&contents_length, sizeof(size_t), 1, fp);
+    fwrite(document->contents, sizeof(char), contents_length, fp);
+
+    // Write created_at and updated_at
+    fwrite(document->created_at, sizeof(struct tm), 1, fp);
+    fwrite(document->updated_at, sizeof(struct tm), 1, fp);
+
+    fclose(fp);
+}
 
 Document *create_document(struct tm *current_date_time, User *user)
 {
@@ -318,7 +365,40 @@ Document *create_document(struct tm *current_date_time, User *user)
 
     new_document->created_at = current_date_time;
     new_document->updated_at = current_date_time;
-    new_document->author = user->username;
 
     return new_document;
 };
+
+void free_user(User *user)
+{
+    free(user->username);
+    for (int i = 0; i < user->note_length; i++)
+    {
+        free(user->note_titles[i]);
+    }
+    free(user->note_titles);
+    free(user);
+};
+
+void free_document(Document *loaded_document)
+{
+    free(loaded_document->contents);
+    free(loaded_document->title);
+    free(loaded_document->created_at);
+    free(loaded_document->updated_at);
+    free(loaded_document);
+};
+
+char *doc_full_path_string(const char *docs_base_dir, char *doc_title)
+{
+    char title[strlen(doc_title) + 1];
+    strcpy(title, doc_title);
+
+    strcat(title, ".bin");
+
+    char *full_path = malloc(MAX_PATH);
+    strcpy(full_path, docs_base_dir);
+    strcat(full_path, title);
+
+    return full_path;
+}
