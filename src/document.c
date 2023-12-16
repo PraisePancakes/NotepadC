@@ -131,3 +131,26 @@ void free_document(Document *loaded_document)
     free(loaded_document->updated_at);
     free(loaded_document);
 };
+
+int delete_document(User *user, int element_to_remove, char *full_path_to_delete_document)
+{
+
+    int i = element_to_remove;
+    int j = element_to_remove + 1;
+
+    while (j < user->note_length)
+    {
+        char *temp = user->note_titles[i];
+        user->note_titles[i] = user->note_titles[j];
+        user->note_titles[j] = temp;
+        i++;
+        j++;
+    }
+
+    user->note_length--;
+
+    free(user->note_titles[user->note_length]);
+    user->note_titles[user->note_length] = NULL;
+
+    return remove(full_path_to_delete_document);
+}

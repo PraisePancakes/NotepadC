@@ -23,5 +23,6 @@ Document *create_document(struct tm *current_date_time, User *user);
 Document *load_document(const char *full_path_to_document);
 char *doc_full_path_string(const char *docs_base_dir, char *doc_title);
 void free_document(Document *loaded_document);
+int delete_document(User *user, int element_to_remove, char *full_path_to_delete_document);
 
 #endif

@@ -4,8 +4,6 @@
 #include "user.h"
 #include "gui.h"
 #include <windows.h>
-#include <conio.h>
-#include <string.h>
 
 /*
     !!to build and run : mkdir build, cmake -> exec
@@ -14,29 +12,6 @@
    2 : IMPLEMENT CONSOLE COLOR HANDLE THROUGH WINDOWS HEADER
    3 : REFACTOR
 */
-
-int delete_document(User *user, int element_to_remove, char *full_path_to_delete_document)
-{
-
-    int i = element_to_remove;
-    int j = element_to_remove + 1;
-
-    while (j < user->note_length)
-    {
-        char *temp = user->note_titles[i];
-        user->note_titles[i] = user->note_titles[j];
-        user->note_titles[j] = temp;
-        i++;
-        j++;
-    }
-
-    user->note_length--;
-
-    free(user->note_titles[user->note_length]);
-    user->note_titles[user->note_length] = NULL;
-
-    return remove(full_path_to_delete_document);
-}
 
 int main()
 {
@@ -119,7 +94,7 @@ int main()
             break;
         case 3:
             system("cls");
-            style_printf(":: DELETE A NOTE :: \n", BRIGHT_WHITE);
+            style_printf(":: CHOOSE A NOTE TO DELETE :: \n", BRIGHT_WHITE);
             if (user->note_length == 0)
             {
                 style_printf(":: YOU CURRENTLY HAVE %d NOTES ::\n", LIGHT_RED, user->note_length);
@@ -139,13 +114,13 @@ int main()
 
             if (delete_document(user, option, full_path_to_delete_document) == 0)
             {
-                style_printf(":: DOCUMENT %s REMOVED SUCCESSFULLY ::", LIGHT_GREEN, user->note_titles[option]);
+                style_printf(":: DOCUMENT REMOVED SUCCESSFULLY ::", LIGHT_GREEN);
                 getch();
                 break;
             }
             else
             {
-                style_printf("ERROR :: file | %s failed to be removed ", LIGHT_RED, user->note_titles[option]);
+                style_printf("ERROR :: file | failed to be removed ", LIGHT_RED);
             };
 
             getch();
