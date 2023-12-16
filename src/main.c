@@ -63,12 +63,12 @@ int main()
             style_printf(":: CHOOSE A NOTE TO VIEW ::\n", BRIGHT_WHITE);
             if (user->note_length == 0)
             {
-                style_printf(":: YOU CURRENTLY HAVE %d NOTES ::", LIGHT_RED, user->note_length);
+                style_printf(":: YOU CURRENTLY HAVE %d NOTES ::\n", LIGHT_RED, user->note_length);
                 getch();
                 break;
             }
 
-            style_printf(":: YOU CURRENTLY HAVE %d NOTES ::", LIGHT_BLUE, user->note_length);
+            style_printf(":: YOU CURRENTLY HAVE %d NOTES ::\n", LIGHT_BLUE, user->note_length);
             for (int i = 0; i < user->note_length; i++)
             {
                 style_printf("%d : %s\n", BRIGHT_WHITE, i, user->note_titles[i]);
