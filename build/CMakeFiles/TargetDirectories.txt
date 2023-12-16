@@ -1,0 +1,3 @@
+C:/Users/aryas/OneDrive/Desktop/NotepadC/build/CMakeFiles/NotepadC.dir
+C:/Users/aryas/OneDrive/Desktop/NotepadC/build/CMakeFiles/edit_cache.dir
+C:/Users/aryas/OneDrive/Desktop/NotepadC/build/CMakeFiles/rebuild_cache.dir

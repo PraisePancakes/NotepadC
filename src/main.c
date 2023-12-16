@@ -7,6 +7,7 @@
 #include <conio.h>
 
 /*
+    !!to build and run : mkdir build, cmake -> exec
    :: TO-DO ::
    1 : IF NOT FIRST TIME CREATING, STAMP UPDATED DATE INTO FILE;
    2 : IMPLEMENT CONSOLE COLOR HANDLE THROUGH WINDOWS HEADER

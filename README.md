@@ -14,8 +14,13 @@ Notepad C is a simple console-based notepad application written in C. It provide
 
 1. **Build the Program:**
    **!! PROGRAM USES CMAKE !!**
-   - Navigate to the project directory and create a `build` folder.
-   - Inside the `build` folder, run `cmake ..` and then `cmake --build .` to compile the executable.
+   - `cd "path_to_project_folder"`
+   - `cd "NotepadC-main"`
+   - `mkdir build`
+   - `cd build`
+   - `cmake -G "preferred-generator" ..` e.g.. `cmake -G "MinGW Makefiles" ..`
+   - if preferred generator is MinGW use `mingw32-make` to build
+   - `NotepadC.exe`
 
 2. **Run the Program:**
    - Execute the generated executable in the `build` folder.
