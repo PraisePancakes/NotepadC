@@ -12,6 +12,7 @@ CMakeFiles/NotepadC.dir/src/document.c.obj: C:/Users/aryas/OneDrive/Desktop/Note
   C:/MinGW/include/cderr.h \
   C:/MinGW/include/cguid.h \
   C:/MinGW/include/commdlg.h \
+  C:/MinGW/include/conio.h \
   C:/MinGW/include/dbt.h \
   C:/MinGW/include/dde.h \
   C:/MinGW/include/ddeml.h \
@@ -347,6 +348,8 @@ C:/MinGW/include/objbase.h:
 
 C:/MinGW/include/cguid.h:
 
+C:/MinGW/include/conio.h:
+
 C:/MinGW/include/sys/bsdtypes.h:
 
 C:/MinGW/include/winsock.h:
@@ -391,8 +394,6 @@ C:/MinGW/include/olectlid.h:
 
 C:/MinGW/include/oleidl.h:
 
-C:/MinGW/include/winreg.h:
-
 C:/MinGW/include/poppack.h:
 
 C:/MinGW/include/w32api.h:
@@ -435,6 +436,8 @@ C:/MinGW/include/winnt.h:
 
 C:/MinGW/include/winperf.h:
 
+C:/MinGW/include/winreg.h:
+
 C:/MinGW/include/winsock2.h:
 
 C:/MinGW/include/winsvc.h:
@@ -452,7 +455,5 @@ C:/MinGW/lib/gcc/mingw32/6.3.0/include/stddef.h:
 C:/Users/aryas/OneDrive/Desktop/NotepadC/src/gui.c:
 
 C:/Users/aryas/OneDrive/Desktop/NotepadC/src/main.c:
-
-C:/MinGW/include/conio.h:
 
 C:/Users/aryas/OneDrive/Desktop/NotepadC/src/user.c:

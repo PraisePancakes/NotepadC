@@ -17,7 +17,7 @@ unsigned short int get_menu_option()
 {
     unsigned short int option = 0;
     style_printf(":::: MENU ::::\n", LIGHT_YELLOW);
-    style_printf("1 : Add a note \n2 : View a note \n3 : Edit a note \n", BRIGHT_WHITE);
+    style_printf("1 : Add a note \n2 : View a note \n3 : Delete a note \n", BRIGHT_WHITE);
     style_printf("4 : Quit \n", LIGHT_RED);
     style_printf("Enter : ", LIGHT_BLUE);
     scanf("%hu", &option);

@@ -5,6 +5,7 @@
 #include "gui.h"
 #include <windows.h>
 #include <conio.h>
+#include <string.h>
 
 /*
     !!to build and run : mkdir build, cmake -> exec
@@ -13,6 +14,29 @@
    2 : IMPLEMENT CONSOLE COLOR HANDLE THROUGH WINDOWS HEADER
    3 : REFACTOR
 */
+
+int delete_document(User *user, int element_to_remove, char *full_path_to_delete_document)
+{
+
+    int i = element_to_remove;
+    int j = element_to_remove + 1;
+
+    while (j < user->note_length)
+    {
+        char *temp = user->note_titles[i];
+        user->note_titles[i] = user->note_titles[j];
+        user->note_titles[j] = temp;
+        i++;
+        j++;
+    }
+
+    user->note_length--;
+
+    free(user->note_titles[user->note_length]);
+    user->note_titles[user->note_length] = NULL;
+
+    return remove(full_path_to_delete_document);
+}
 
 int main()
 {
@@ -79,6 +103,13 @@ int main()
             scanf("%d", &option);
             char *full_path_to_load_doc = doc_full_path_string(documents_base_directory, user->note_titles[option]);
             Document *loaded_document = load_document(full_path_to_load_doc);
+            if (loaded_document == NULL)
+            {
+                free(loaded_document);
+                style_printf("ERROR :: file | failed to open file for reading", LIGHT_RED);
+                getch();
+                break;
+            }
             system("cls");
             display_document(loaded_document);
             free_document(loaded_document);
@@ -87,7 +118,36 @@ int main()
             getch();
             break;
         case 3:
-            style_printf(":: FEATURE TBA ::", BRIGHT_WHITE);
+            system("cls");
+            style_printf(":: DELETE A NOTE :: \n", BRIGHT_WHITE);
+            if (user->note_length == 0)
+            {
+                style_printf(":: YOU CURRENTLY HAVE %d NOTES ::\n", LIGHT_RED, user->note_length);
+                getch();
+                break;
+            }
+
+            style_printf(":: YOU CURRENTLY HAVE %d NOTES ::\n", LIGHT_BLUE, user->note_length);
+            for (int i = 0; i < user->note_length; i++)
+            {
+                style_printf("%d : %s\n", BRIGHT_WHITE, i, user->note_titles[i]);
+            }
+            option = 0;
+            style_printf("Enter : ", BRIGHT_WHITE);
+            scanf("%d", &option);
+            char *full_path_to_delete_document = doc_full_path_string(documents_base_directory, user->note_titles[option]);
+
+            if (delete_document(user, option, full_path_to_delete_document) == 0)
+            {
+                style_printf(":: DOCUMENT %s REMOVED SUCCESSFULLY ::", LIGHT_GREEN, user->note_titles[option]);
+                getch();
+                break;
+            }
+            else
+            {
+                style_printf("ERROR :: file | %s failed to be removed ", LIGHT_RED, user->note_titles[option]);
+            };
+
             getch();
             break;
         case 4:

@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <conio.h>
 #include "gui.h"
 #define BUFFER_SIZE 256
 #define MAX_FILE_PATH 260
@@ -82,7 +83,6 @@ Document *load_document(const char *full_path_to_doc)
     FILE *fp = fopen(full_path_to_doc, "rb");
     if (fp == NULL)
     {
-        style_printf("ERROR :: file | %s returned NULL for reading note", LIGHT_RED, full_path_to_doc);
         fclose(fp);
         return NULL;
     }
