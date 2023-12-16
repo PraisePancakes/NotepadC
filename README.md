@@ -45,7 +45,7 @@ Notepad C is a simple console-based notepad application written in C. It provide
 
 ## Version Information
 
-- Version: v0.0.1-alpha
+- Version: v0.0.5-alpha
 
 ## Contributors
 

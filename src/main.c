@@ -9,15 +9,14 @@
     !!to build and run : mkdir build, cmake -> exec
    :: TO-DO ::
    1 : IF NOT FIRST TIME CREATING, STAMP UPDATED DATE INTO FILE;
-   2 : IMPLEMENT CONSOLE COLOR HANDLE THROUGH WINDOWS HEADER
-   3 : REFACTOR
+   2 : REFACTOR
 */
 
 int main()
 {
     hc = GetStdHandle(STD_OUTPUT_HANDLE);
 
-    const char *version = "v0.0.0-unreleased";
+    const char *version = "v0.0.5-alpha";
     const char *user_filepath = ".././save/User/user.bin";
     const char *documents_base_directory = ".././save/Docs/";
     const unsigned short int MENU_EXIT = 4;
